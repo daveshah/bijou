@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      MIX_ENV: dev
+  db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    volumes:
+      - .:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
