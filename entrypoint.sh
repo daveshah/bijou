@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mix setup
-mix phx.server
+iex -S mix phx.server

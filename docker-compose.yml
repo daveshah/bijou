@@ -11,6 +11,8 @@ services:
       - db
     environment:
       MIX_ENV: dev
+    stdin_open: true
+    tty: true
   db:
     image: postgres:13.3
     environment:
