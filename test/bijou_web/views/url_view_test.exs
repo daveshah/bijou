@@ -1,3 +1,3 @@
-defmodule BijouWeb.PageViewTest do
+defmodule BijouWeb.UrlViewTest do
   use BijouWeb.ConnCase, async: true
 end

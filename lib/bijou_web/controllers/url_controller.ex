@@ -1,4 +1,4 @@
-defmodule BijouWeb.PageController do
+defmodule BijouWeb.UrlController do
   use BijouWeb, :controller
   alias Bijou.Urls
 
@@ -6,9 +6,8 @@ defmodule BijouWeb.PageController do
     render(conn, "index.html")
   end
 
-  @spec create(Plug.Conn.t(), nil | maybe_improper_list | map) :: Plug.Conn.t()
   def create(conn, params) do
-    %{short_url: s, errors: e} = Urls.create_short_url(params["url"])
+    {:ok, _ } = Urls.create_short_url(params["url"])
 
     render(conn, "index.html")
   end

@@ -1,5 +1,6 @@
-defmodule BijouWeb.PageControllerTest do
+defmodule BijouWeb.UrlControllerTest do
   use BijouWeb.ConnCase
+  alias Bijou.Urls
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
@@ -8,15 +9,14 @@ defmodule BijouWeb.PageControllerTest do
 
   describe "POST /" do
     test "posting with a valid url", %{conn: conn} do
-      before_short_url_count = Enum.count(Bijou.Repo.all(Bijou.ShortUrl))
+      before_short_url_count = Enum.count(Urls.list_short_urls())
 
       conn = post(conn, "/", url: "https://www.google.com")
       assert html_response(conn, 200)
 
-      after_short_url_count = Enum.count(Bijou.Repo.all(Bijou.ShortUrl))
+      after_short_url_count = Enum.count(Urls.list_short_urls())
 
       assert after_short_url_count == before_short_url_count + 1
-      # TODO: Could test by querying for www.google.com
     end
   end
 end

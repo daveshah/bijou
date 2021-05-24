@@ -16,8 +16,8 @@ defmodule BijouWeb.Router do
   scope "/", BijouWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-    post "/", PageController, :create
+    get "/", UrlController, :index
+    post "/", UrlController, :create
   end
 
   # Other scopes may use custom stacks.
