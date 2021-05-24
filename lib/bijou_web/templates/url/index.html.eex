@@ -1,10 +1,18 @@
-<section class="phx-hero">
-  <h1>Welcome to Bijou!</h1>
-</section>
-
-<section class="row">
-  <%= form_for @conn, "", fn f -> %>
-    <%= text_input f, :url %>
-    <%= submit "Shorten" %>
+<div class="container">
+  <%= form_for @changeset, "", fn f -> %>
+    <div class="level">
+      <%= text_input f, :original_url, class: "input", placeholder: "https://www.yoururl.com" %>
+      <%= submit "Make it shorter", class: "button is-primary" %>
+    </div>
+    <%= error_tag f, :original_url %>
   <% end %>
-</section>
+</div>
+
+<%= if assigns[:urls] do %>
+  <div>
+    <%= link @urls[:short_url], to: @urls[:short_url], target: "_blank", rel: "noopener noreferrer" %>
+    should now take you to
+    <%= @urls[:original_url] %>
+  </div>
+
+<% end %>
