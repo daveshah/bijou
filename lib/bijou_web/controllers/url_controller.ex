@@ -10,9 +10,11 @@ defmodule BijouWeb.UrlController do
   @spec create(Plug.Conn.t(), nil | maybe_improper_list | map) :: Plug.Conn.t()
   def create(conn, params) do
     case Urls.create_short_url(params["short_url"]) do
-      {:ok, short_url } ->
-        urls = %{ short_url: Helpers.url_url(conn, :show, short_url.key),
-                  original_url: short_url.original_url }
+      {:ok, short_url} ->
+        urls = %{
+          short_url: Helpers.url_url(conn, :show, short_url.key),
+          original_url: short_url.original_url
+        }
 
         render(conn, "index.html", urls: urls, changeset: Bijou.Urls.short_url_changeset())
 
@@ -24,7 +26,7 @@ defmodule BijouWeb.UrlController do
   def show(conn, params) do
     case Urls.get_short_url_by_key(params["id"]) do
       nil -> render(conn, "index.html")
-      %{ original_url: url } -> redirect(conn, external: url)
+      %{original_url: url} -> redirect(conn, external: url)
     end
   end
 end

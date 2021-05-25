@@ -25,14 +25,18 @@ defmodule Bijou.Urls.ShortUrl do
 
   defp validate_url_format(changeset) do
     original_url = get_field(changeset, :original_url)
+
     if is_binary(original_url) do
-      case original_url |> String.trim |> URI.parse do
-        %{ scheme: nil } ->
+      case original_url |> String.trim() |> URI.parse() do
+        %{scheme: nil} ->
           add_error(changeset, :original_url, "Please specify http or https")
-        %{ host: nil } ->
+
+        %{host: nil} ->
           add_error(changeset, :original_url, "Please specify a valid hostname")
-        %{ host: "" } ->
+
+        %{host: ""} ->
           add_error(changeset, :original_url, "Please specify a valid hostname")
+
         _ ->
           changeset
       end

@@ -10,20 +10,17 @@ defmodule Bijou.UrlsTest do
 
   describe "create_short_url/1" do
     test "with a valid url" do
-      assert {:ok, %ShortUrl{original_url: @valid_url} } =
-        Urls.create_short_url(@valid_params)
+      assert {:ok, %ShortUrl{original_url: @valid_url}} = Urls.create_short_url(@valid_params)
     end
 
     test "duplicate urls" do
-      {:ok, %ShortUrl{original_url: @valid_url,
-                      key: first_key } } =
+      {:ok, %ShortUrl{original_url: @valid_url, key: first_key}} =
         Urls.create_short_url(@valid_params)
 
-      {:ok, %ShortUrl{original_url: @valid_url,
-                      key: second_key } } =
+      {:ok, %ShortUrl{original_url: @valid_url, key: second_key}} =
         Urls.create_short_url(@valid_params)
 
-       assert second_key != first_key
+      assert second_key != first_key
     end
   end
 
@@ -40,8 +37,8 @@ defmodule Bijou.UrlsTest do
     test "that it returns a short_url by key" do
       Fixtures.create_fixture!(ShortUrl, %{original_url: "https://www.test.com", key: "TEST1"})
 
-      assert %ShortUrl{ key: "TEST1", original_url: "https://www.test.com" } =
-        Urls.get_short_url_by_key("TEST1")
+      assert %ShortUrl{key: "TEST1", original_url: "https://www.test.com"} =
+               Urls.get_short_url_by_key("TEST1")
     end
 
     test "that it returns nil when no key matches" do

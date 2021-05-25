@@ -43,7 +43,7 @@ defmodule Bijou.Urls do
       upper_and_lower = Enum.to_list(?A..?Z) ++ Enum.to_list(?a..?z)
       numeric = Enum.to_list(0..9) |> Enum.map(&to_string/1)
 
-      upper_and_lower ++ numeric
+      (upper_and_lower ++ numeric)
       |> Enum.take_random(length)
       |> to_string()
     end

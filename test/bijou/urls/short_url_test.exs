@@ -4,7 +4,7 @@ defmodule Bijou.Urls.ShortUrlTest do
 
   describe "changeset/2" do
     test "valid attributes" do
-      valid_attrs = %{original_url: "https://www.test.com", key: "TEST1" }
+      valid_attrs = %{original_url: "https://www.test.com", key: "TEST1"}
 
       changeset = ShortUrl.changeset(%ShortUrl{}, valid_attrs)
 
@@ -12,19 +12,19 @@ defmodule Bijou.Urls.ShortUrlTest do
     end
 
     test "invalid URLs" do
-      invalid_attrs = %{original_url: "www.test.com", key: "TEST1" }
+      invalid_attrs = %{original_url: "www.test.com", key: "TEST1"}
 
       changeset = ShortUrl.changeset(%ShortUrl{}, invalid_attrs)
 
       refute changeset.valid?
 
-      invalid_attrs = %{original_url: "test", key: "TEST1" }
+      invalid_attrs = %{original_url: "test", key: "TEST1"}
 
       changeset = ShortUrl.changeset(%ShortUrl{}, invalid_attrs)
 
       refute changeset.valid?
 
-      invalid_attrs = %{original_url: "http:// ", key: "TEST1" }
+      invalid_attrs = %{original_url: "http:// ", key: "TEST1"}
 
       changeset = ShortUrl.changeset(%ShortUrl{}, invalid_attrs)
 
