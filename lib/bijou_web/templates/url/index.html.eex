@@ -2,17 +2,21 @@
   <%= form_for @changeset, "", fn f -> %>
     <div class="level">
       <%= text_input f, :original_url, class: "input", placeholder: "https://www.yoururl.com" %>
-      <%= submit "Make it shorter", class: "button is-primary" %>
+      <%= submit "Shorten", class: "button" %>
     </div>
     <%= error_tag f, :original_url %>
   <% end %>
+  <%= if assigns[:urls] do %>
+    <div class="notification is-info is-light">
+      <div class="level">
+        <div>
+          <%= @urls[:original_url] %>
+        </div>
+        <div>
+          <%= link @urls[:short_url], to: @urls[:short_url], target: "_blank", rel: "noopener noreferrer", id: "shortened-url-link" %>
+        </div>
+        <a id="copy-button" class="button">Copy</a>
+      </div>
+    </div>
+  <% end %>
 </div>
-
-<%= if assigns[:urls] do %>
-  <div>
-    <%= link @urls[:short_url], to: @urls[:short_url], target: "_blank", rel: "noopener noreferrer" %>
-    should now take you to
-    <%= @urls[:original_url] %>
-  </div>
-
-<% end %>

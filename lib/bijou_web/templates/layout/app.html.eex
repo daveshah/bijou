@@ -13,9 +13,7 @@
       <h1 class="title"> Bijou.</h1>
       <p class="subtitle">Small and elegant... URLs (and because naming is hard) 🤔️ </p>
     </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <main role="main">
       <%= @inner_content %>
     </main>
   </body>

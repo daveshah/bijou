@@ -2,12 +2,23 @@
 @import "~bulma/bulma";
 
 body {
-  margin: 2em;
+  background-color: #196091;
+  height: 100vh;
 }
 
 header {
-  margin-bottom: 1em;
+  padding: 2em;
   font-family: monospace;
+  background-color: whitesmoke;
+  margin-bottom: 2em;
+}
+
+form button {
+  margin-left: .25em;
+}
+
+.notification {
+  margin-top: 1em;
 }
 
 .alert {
@@ -38,7 +49,7 @@ header {
   display: none;
 }
 .invalid-feedback {
-  color: #a94442;
+  color: white;
   display: block;
   margin: -1rem 0 2rem;
 }

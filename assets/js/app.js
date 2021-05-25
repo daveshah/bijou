@@ -13,3 +13,18 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  let copyButton = document.getElementById('copy-button');
+  let shortenedUrlLink = document.getElementById('shortened-url-link');
+  if (copyButton && shortenedUrlLink) {
+    copyButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(shortenedUrlLink.href).then(() => {
+        copyButton.text = 'Copied!'
+      },() => {
+        console.error('Failed to copy')
+      });
+    });
+  }
+});
